@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Workout Companion</string>
+    <string name="creatorName">Farhad</string>
+    <string name="homeButton">Go Home</string>
+</resources>
