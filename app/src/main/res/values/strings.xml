@@ -2,4 +2,20 @@
     <string name="app_name">Workout Companion</string>
     <string name="creatorName">Farhad</string>
     <string name="homeButton">Go Home</string>
+    <string name="welcomeMessage1">Good Morning, </string>
+    <string name="welcomeMessage2">Good Afternoon, </string>
+    <string name="welcomeMessage3">Good Evening, </string>
+    <string name="weeklyTitle">Weekly Overview:</string>
+    <string name="homeWorkoutsTitle">💪 Workouts:</string>
+    <string name="homeTimeTitle">⏱️ Time:</string>
+    <string name="homeRepetitionsTitle">🏋️ Repetitions:</string>
+    <string name="homeHoursTitle">Hours</string>
+    <string name="homeRepsTitle">Reps</string>
+    <string name="homeCompletedTitle">Completed Workouts</string>
+
+    <string name="firstName">Farhad!</string>
+    <string name="workoutNumber">2</string>
+    <string name="timeNumber">1.2</string>
+    <string name="repetitionNumber">148</string>
+
 </resources>

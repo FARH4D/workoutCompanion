@@ -7,15 +7,158 @@
     android:background="#313030">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="148dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="534dp"
-        android:text="Hello 2"
+        android:id="@+id/welcomeMessage"
+        android:layout_width="384dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/welcomeMessage1"
         android:textColor="#FDFDFD"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/weeklyOverview"
+        android:layout_width="304dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="94dp"
+        android:gravity="center"
+        android:text="@string/weeklyTitle"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Hello 2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
+
+    <TextView
+        android:id="@+id/workoutsTitle"
+        android:layout_width="167dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/homeWorkoutsTitle"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weeklyOverview" />
+
+    <TextView
+        android:id="@+id/timeTitle"
+        android:layout_width="136dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/homeTimeTitle"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/workoutsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/weeklyOverview" />
+
+    <TextView
+        android:id="@+id/timeNumber"
+        android:layout_width="46dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="1.2"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTitle" />
+
+    <TextView
+        android:id="@+id/hoursTitle"
+        android:layout_width="74dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="17dp"
+        android:gravity="center"
+        android:text="@string/homeHoursTitle"
+        android:textColor="#F10000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/timeNumber"
+        app:layout_constraintTop_toBottomOf="@+id/timeTitle" />
+
+    <TextView
+        android:id="@+id/workoutNumber"
+        android:layout_width="171dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="@string/workoutNumber"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workoutsTitle" />
+
+    <TextView
+        android:id="@+id/repetitionsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/homeRepetitionsTitle"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeNumber" />
+
+    <TextView
+        android:id="@+id/completedWorkouts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/homeCompletedTitle"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workoutNumber" />
+
+    <TextView
+        android:id="@+id/repetitionNumber"
+        android:layout_width="53dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
+        android:gravity="center"
+        android:text="@string/repetitionNumber"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintStart_toEndOf="@+id/completedWorkouts"
+        app:layout_constraintTop_toBottomOf="@+id/repetitionsTitle" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="60dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="43dp"
+        android:text="@string/homeRepsTitle"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/repetitionNumber"
+        app:layout_constraintTop_toBottomOf="@+id/repetitionsTitle" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
