@@ -9,6 +9,7 @@
     <string name="homeWorkoutsTitle">💪 Workouts:</string>
     <string name="homeTimeTitle">⏱️ Time:</string>
     <string name="homeRepetitionsTitle">🏋️ Repetitions:</string>
+    <string name="workoutStreakTitle">📈 Workout Streak:</string>
     <string name="homeHoursTitle">Hours</string>
     <string name="homeRepsTitle">Reps</string>
     <string name="homeCompletedTitle">Completed Workouts</string>

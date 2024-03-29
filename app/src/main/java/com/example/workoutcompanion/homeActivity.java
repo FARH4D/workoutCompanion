@@ -17,12 +17,13 @@ public class homeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        TextView homeButton = findViewById(R.id.navHome);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+
+        TextView reportButton = findViewById(R.id.navReport);
+        reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(homeActivity.this, MainActivity.class);
-                startActivity(homeIntent);
+                Intent reportIntent = new Intent(homeActivity.this, reportActivity.class);
+                startActivity(reportIntent);
                 overridePendingTransition(0, 0);
             }
         });

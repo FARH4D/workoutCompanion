@@ -25,6 +25,9 @@
         <activity
             android:name=".homeActivity">
         </activity>
+        <activity
+            android:name=".reportActivity">
+        </activity>
     </application>
 
 </manifest>
