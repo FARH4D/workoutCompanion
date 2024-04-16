@@ -28,6 +28,9 @@
         <activity
             android:name=".reportActivity">
         </activity>
+        <activity
+            android:name=".exerciseActivity">
+        </activity>
     </application>
 
 </manifest>

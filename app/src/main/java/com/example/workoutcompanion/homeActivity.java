@@ -12,21 +12,39 @@ import android.widget.TextView;
 
 public class homeActivity extends AppCompatActivity {
 
+ // REMEMBER TO COMMENT EVERYTHING
+
+
+
+
+    // REMEMBER TO COMMENT
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.home_page); // Gets the layout of the screen from home_page.xml and sets it according to that.
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);  // Sets the application as full screen.
 
-        TextView reportButton = findViewById(R.id.navReport);
-        reportButton.setOnClickListener(new View.OnClickListener() {
+        TextView reportButton = findViewById(R.id.navReport); // Gets the id of the report button on the bottom nav bar.
+        reportButton.setOnClickListener(new View.OnClickListener() { // Creates an onClick listener for the report button so the application can detect when it has been clicked.
             @Override
             public void onClick(View view) {
-                Intent reportIntent = new Intent(homeActivity.this, reportActivity.class);
+                Intent reportIntent = new Intent(homeActivity.this, reportActivity.class); // Creates a new intent so the screen can be switched to the report screen.
                 startActivity(reportIntent);
+                overridePendingTransition(0, 0); // Gets rid of the animation when switching screens so the process looks smoother and less cheap.
+            }
+        });
+
+        TextView exerciseButton = findViewById(R.id.navExercises);
+        exerciseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent exerciseIntent = new Intent(homeActivity.this, exerciseActivity.class);
+                startActivity(exerciseIntent);
                 overridePendingTransition(0, 0);
             }
         });
+
     }
     @Override
     public void onBackPressed() {

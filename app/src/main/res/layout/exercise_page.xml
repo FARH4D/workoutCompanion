@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#313030">
+
+    <FrameLayout
+        android:id="@+id/frontContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/yellowGuyForward"
+            android:layout_gravity="center"
+            android:layout_width="350dp"
+            android:layout_height="590dp"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="49dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/yellowguy_forward" />
+
+        <TextView
+            android:id="@+id/shoulderLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Shoulders"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="124dp"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:id="@+id/chestLabel"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:text="Chest"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="143dp" />
+
+        <TextView
+            android:id="@+id/absLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Abs"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="205dp"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:id="@+id/bicepLabel"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:text="Biceps"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="190dp"
+            android:layout_marginLeft="12dp"/>
+
+        <TextView
+            android:id="@+id/quadLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Quads"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="365dp"
+            android:layout_marginLeft="20dp"/>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/backContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/yellowGuyBackward"
+            android:layout_gravity="center"
+            android:layout_width="350dp"
+            android:layout_height="590dp"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="49dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/yellowguy_backward" />
+
+        <TextView
+            android:id="@+id/trapLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Traps"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="106dp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/gluteLabel"
+            android:layout_width="85dp"
+            android:layout_height="25dp"
+            android:text="Glutes"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="288dp" />
+
+        <TextView
+            android:id="@+id/tricepLabel"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:text="Triceps"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="187dp"
+            android:layout_marginLeft="3dp"/>
+
+        <TextView
+            android:id="@+id/latLabel"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:text="Lats"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="190dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/hamstringLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Hamstrings"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="3dp"/>
+
+        <TextView
+            android:id="@+id/calfLabel"
+            android:layout_width="90dp"
+            android:layout_height="25dp"
+            android:text="Calves"
+            android:layout_gravity="right"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginTop="448dp"
+            android:layout_marginRight="10dp"/>
+
+    </FrameLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="409dp"
+        android:layout_height="80dp"
+        android:background="#202020"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Home"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/navReport"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/navReport"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Report"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/navExercises"
+            app:layout_constraintStart_toEndOf="@id/navHome"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/navExercises"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Exercises"
+            android:textColor="#FF0000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/navProfile"
+            app:layout_constraintStart_toEndOf="@id/navReport"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Profile"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/navExercises"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/turnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="8dp"
+        android:text="180"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
