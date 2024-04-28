@@ -29,7 +29,11 @@
             android:name=".reportActivity">
         </activity>
         <activity
-            android:name=".exerciseActivity">
+            android:name=".exerciseActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
+            android:name=".profileActivity">
         </activity>
     </application>
 

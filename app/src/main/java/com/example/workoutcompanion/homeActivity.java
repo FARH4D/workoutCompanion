@@ -40,7 +40,18 @@ public class homeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent exerciseIntent = new Intent(homeActivity.this, exerciseActivity.class);
+                exerciseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(exerciseIntent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        TextView profileButton = findViewById(R.id.navProfile);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profileIntent = new Intent(homeActivity.this, profileActivity.class);
+                startActivity(profileIntent);
                 overridePendingTransition(0, 0);
             }
         });

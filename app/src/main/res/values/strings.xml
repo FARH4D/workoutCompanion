@@ -16,9 +16,14 @@
 
     <string name="basicWorkoutsTitle">Basic Workouts</string>
 
-    <string name="firstName">Farhad!</string>
+    <string name="firstName">Farhad</string>
     <string name="workoutNumber">2</string>
     <string name="timeNumber">1.2</string>
     <string name="repetitionNumber">148</string>
+
+    <string name = "fullName">Farhad Ahmed</string>
+    <string name = "birthDate">16/05/2002</string>
+    <string name = "email">Farhad.Ahmed3@mail.bcu.ac.uk</string>
+    <string name = "phoneNumber">012152309534</string>
 
 </resources>
