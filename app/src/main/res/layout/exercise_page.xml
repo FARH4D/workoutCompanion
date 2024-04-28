@@ -185,7 +185,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomBar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#202020"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -30,8 +30,8 @@ public class homeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent reportIntent = new Intent(homeActivity.this, reportActivity.class); // Creates a new intent so the screen can be switched to the report screen.
+                reportIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(reportIntent);
-                overridePendingTransition(0, 0); // Gets rid of the animation when switching screens so the process looks smoother and less cheap.
             }
         });
 
@@ -42,7 +42,6 @@ public class homeActivity extends AppCompatActivity {
                 Intent exerciseIntent = new Intent(homeActivity.this, exerciseActivity.class);
                 exerciseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(exerciseIntent);
-                overridePendingTransition(0, 0);
             }
         });
 
@@ -51,8 +50,8 @@ public class homeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent profileIntent = new Intent(homeActivity.this, profileActivity.class);
+                profileIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(profileIntent);
-                overridePendingTransition(0, 0);
             }
         });
 
