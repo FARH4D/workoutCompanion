@@ -13,21 +13,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Button homeButton = findViewById(R.id.toHome);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent = new Intent(MainActivity.this, homeActivity.class);
-                startActivity(homeIntent);
-                overridePendingTransition(0, 0);
+        firstTimeChecker FirstTimeChecker = new firstTimeChecker(this);
 
-            }
-        });
-
+        if (FirstTimeChecker.isFirstTime()) {
+            //FirstTimeChecker.setFirstTime(false);
+            Intent welcomeIntent = new Intent(MainActivity.this, welcomeActivity.class); // Creates a new intent so the screen can be switched to the report screen.
+            welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(welcomeIntent);
+        }
+        else {
+            Intent homeIntent = new Intent(MainActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the report screen.
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(homeIntent);
+        }
+        finish();
     }
-
-
 }
