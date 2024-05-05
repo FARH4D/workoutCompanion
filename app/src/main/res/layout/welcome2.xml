@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#313030">
+
+    <Button
+        android:id="@+id/sedentaryButton"
+        android:layout_width="244dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="535dp"
+        android:backgroundTint="#00FFFFFF"
+        android:text="@string/sedentary"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:barrierMargin="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/lightlyActiveButton"
+        android:layout_width="244dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="445dp"
+        android:backgroundTint="#00FAFAFA"
+        android:text="@string/lightlyActive"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/moderatelyActiveButton"
+        android:layout_width="244dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="353dp"
+        android:backgroundTint="#00444343"
+        android:text="@string/moderatelyActive"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/VeryActiveButton"
+        android:layout_width="244dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="261dp"
+        android:backgroundTint="#00444343"
+        android:text="@string/veryActive"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="184dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#444343"
+        android:text="@string/continueButton"
+        android:textColor="#FFFFFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/welcomePage2Message2"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMessage1" />
+
+    <TextView
+        android:id="@+id/welcomeMessage1"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/welcomePage2Message1"
+        android:textColor="#FDFDFD"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

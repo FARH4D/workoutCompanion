@@ -36,6 +36,9 @@
         <activity
             android:name=".welcomeActivity">
         </activity>
+        <activity
+            android:name=".welcomeActivity2">
+        </activity>
     </application>
 
 </manifest>

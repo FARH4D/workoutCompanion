@@ -16,6 +16,14 @@
 
     <string name="welcomePage1Message">What\'s your gender?</string>
     <string name="welcomePage1Message2">Let\'s find out more about you</string>
+    <string name="welcomePage2Message1"> Describe your activity level</string>
+    <string name="welcomePage2Message2">How active are you?</string>
+    <string name="continueButton">Continue</string>
+
+    <string name="sedentary">👨‍💻 Sedentary</string>
+    <string name="lightlyActive">🚶‍♂️ Lightly Active</string>
+    <string name="moderatelyActive">🏃‍♂️ Moderately Active</string>
+    <string name="veryActive">🤼‍♂️ Very Active</string>
 
     <string name="basicWorkoutsTitle">Basic Workouts</string>
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- Set the status bar to transparent -->
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <!-- Add this line if your app has a light status bar to ensure that the status icons are visible -->
+    <item name="android:windowLightStatusBar">true</item>
+
+    <!-- Use NoActionBar as we're handling the top area manually -->
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+</style>
+</resources>
