@@ -1,6 +1,7 @@
 package com.example.workoutcompanion;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -131,9 +132,21 @@ public class welcomeActivity extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent welcomeIntent = new Intent(welcomeActivity.this, welcomeActivity2.class); // Creates a new intent so the screen can be switched to the report screen.
-                welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(welcomeIntent);
+                if(isManSelected == 1 | isManSelected == 2){
+                    SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE); // Open a sharedpreferences instance to save the userchoices so they can be used later
+                    SharedPreferences.Editor editor = choices.edit(); // Opens the editor for the sharedpreferences
+
+                    if (isManSelected == 1){
+                        editor.putString("gender", "male");
+                    } else {
+                        editor.putString("gender", "female");
+                    }
+                    editor.apply(); // Saves the edited data
+
+                    Intent welcomeIntent = new Intent(welcomeActivity.this, welcomeActivity2.class); // Creates a new intent so the screen can be switched to the welcome screen 2.
+                    welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(welcomeIntent);
+                }
             }
         });
 

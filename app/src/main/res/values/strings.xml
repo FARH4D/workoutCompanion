@@ -18,12 +18,19 @@
     <string name="welcomePage1Message2">Let\'s find out more about you</string>
     <string name="welcomePage2Message1"> Describe your activity level</string>
     <string name="welcomePage2Message2">How active are you?</string>
+    <string name="welcomePage3Message1">What\'s your fitness level?</string>
+    <string name="welcomePage3Message2">How many push ups can you do in a row?</string>
     <string name="continueButton">Continue</string>
 
     <string name="sedentary">👨‍💻 Sedentary</string>
     <string name="lightlyActive">🚶‍♂️ Lightly Active</string>
     <string name="moderatelyActive">🏃‍♂️ Moderately Active</string>
     <string name="veryActive">🤼‍♂️ Very Active</string>
+
+    <string name="beginner">Beginner: 0 - 5 Push ups</string>
+    <string name="intermediate">Intermediate: 5 - 20 Push ups</string>
+    <string name="advanced">Advanced: 20 - 40 Push ups</string>
+    <string name="elite">Elite: 40 Push ups+</string>
 
     <string name="basicWorkoutsTitle">Basic Workouts</string>
 
