@@ -6,9 +6,98 @@
     android:layout_height="match_parent"
     android:background="#313030">
 
+    <TextView
+        android:id="@+id/emailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="142dp"
+        android:text="@string/emailTitle"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-    <!--  Using a Relative Layout because of the straight-forwardness of putting text
-          inside the semi-circle  -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTitle" />
+
+    <TextView
+        android:id="@+id/passTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="142dp"
+        android:text="@string/passTitle"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+
+    <EditText
+        android:id="@+id/editTextPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passTitle" />
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="140dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="100dp"
+        android:text="@string/signInTitle"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:backgroundTint="#444343"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+
+    <TextView
+        android:id="@+id/signUpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="142dp"
+        android:text="@string/noAccount"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
@@ -17,93 +106,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!--  Takes the circle drawable and converts it into a semi-circle by
-              cropping out the top half  -->
-        <View
-            android:id="@+id/semi_circle_view"
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="-89dp"
-            android:background="@drawable/semi_circle" />
-
-        <!--  Code for the text inside the semi-circle      -->
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="35dp"
-            android:text="@string/firstName"
+            android:text="@string/signInTitle"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             android:textStyle="bold" />
 
-
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/profileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="41dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="42dp"
-        android:text="@string/fullName"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/profileBirth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
-
-    <TextView
-        android:id="@+id/profileBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="48dp"
-        android:text="@string/birthDate"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/profileEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/profileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="47dp"
-        android:text="@string/email"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold
-"
-        app:layout_constraintBottom_toTopOf="@+id/profilePhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/profilePhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="128dp"
-        android:text="@string/phoneNumber"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -167,7 +181,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Profile"
-            android:textColor="#FF0000"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             android:clickable="true"
@@ -179,31 +193,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/signIn"
-        android:layout_width="218dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="96dp"
-        android:text="@string/noSignIn"
+        android:id="@+id/signUpButton"
+        android:layout_width="140dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="68dp"
+        android:text="@string/signUpTitle"
         android:textColor="@color/white"
-        android:backgroundTint="@color/darkTurquoise"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePhone" />
-
-    <Button
-        android:id="@+id/premiumButton"
-        android:layout_width="223dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="96dp"
-        android:text="@string/noPremiumStatus"
-        android:textColor="@color/white"
-        android:backgroundTint="#866501"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signIn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

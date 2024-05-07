@@ -1,6 +1,7 @@
 package com.example.workoutcompanion;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -8,16 +9,18 @@ import android.util.Log;
 public class DatabaseManager extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "workoutCompanionData";
-    private static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "workoutCompanionData";
+    public static final int DATABASE_VERSION = 1;
 
     // Table Names
-    private static final String TABLE_USERS = "users";
+    public static final String TABLE_USERS = "users";
 
     // User Table Columns
-    private static final String KEY_USER_ID = "id";
-    private static final String KEY_USER_NAME = "name";
-    private static final String KEY_USER_PASSWORD = "password";
+    public static final String KEY_USER_NAME = "name";
+    public static final String KEY_USER_PASSWORD = "password";
+    public static final String KEY_USER_EMAIL = "email";
+    public static final String KEY_USER_BIRTH = "birthdate";
+
 
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,12 +28,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS +
-                "(" +
-                KEY_USER_ID + " INTEGER PRIMARY KEY," + // Defines the primary key
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "(" +
                 KEY_USER_NAME + " TEXT," +
-                KEY_USER_PASSWORD + " INTEGER" +
-                ")";
+                KEY_USER_PASSWORD + " TEXT," +
+                KEY_USER_EMAIL + " TEXT PRIMARY KEY," +
+                KEY_USER_PASSWORD + "TEXT," +
+                KEY_USER_BIRTH + " TEXT" + ")";
+
         db.execSQL(CREATE_USERS_TABLE);
     }
 
@@ -40,5 +44,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         // Creates tables again
         onCreate(db);
+    }
+    public boolean checkUser(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase(); // Gets a readable version of the SQLite database
+        Cursor cursor = db.query(TABLE_USERS, // We must makes an SQL query to check the table with cursor
+                new String[]{KEY_USER_EMAIL}, KEY_USER_EMAIL + "=? AND " + KEY_USER_PASSWORD + "=?",
+                new String[]{email, password}, null, null, null, null); // The rest of the parameters are not needed, but they have to be filled so I make them all null
+
+        int count = cursor.getCount(); // Gets the number of rows returned by the getCount method.
+        cursor.close(); // Closes cursor since it is no longer needed, to free up resources.
+        db.close(); // Closes the database
+        return count == 1; // Returns true if the count is 1, which means that 1 record matches the email and password combo
     }
 }

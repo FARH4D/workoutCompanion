@@ -10,30 +10,51 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class profileActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
+
+public class signInActivity extends AppCompatActivity {
+
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private DatabaseManager dbManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.sign_in);
         Window window = getWindow(); // Gets the window instance of the activity and gets the properties of it.
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); // Essentially tells the system that it wants to be in charge of drawing the background for the phone's status bar, so my app can handle it (this lets me make it transparent).
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); // Clears the translucency of the status bar, the clear flag function lets me remove any specific setting.
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
-        Button signInButton = findViewById(R.id.signIn);
+
+        dbManager = new DatabaseManager(this);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPass);
+        Button signInButton = findViewById(R.id.signInButton);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent signInIntent = new Intent(profileActivity.this, signInActivity.class);
-                signInIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(signInIntent);
+                signInDatabase();
+            }
+        });
+
+        Button signUpButton = findViewById(R.id.signUpButton);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signUpIntent = new Intent(signInActivity.this, signUpActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                signUpIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+                startActivity(signUpIntent);
             }
         });
 
@@ -41,7 +62,7 @@ public class profileActivity extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() { // Creates an onClick listener for the home button so the application can detect when it has been clicked.
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(profileActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                Intent homeIntent = new Intent(signInActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
                 homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
                 startActivity(homeIntent);
             }
@@ -51,7 +72,7 @@ public class profileActivity extends AppCompatActivity {
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent reportIntent = new Intent(profileActivity.this, reportActivity.class);
+                Intent reportIntent = new Intent(signInActivity.this, reportActivity.class);
                 reportIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(reportIntent);
             }
@@ -61,13 +82,35 @@ public class profileActivity extends AppCompatActivity {
         exerciseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent exerciseIntent = new Intent(profileActivity.this, exerciseActivity.class);
+                Intent exerciseIntent = new Intent(signInActivity.this, exerciseActivity.class);
                 exerciseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(exerciseIntent);
             }
         });
 
+        TextView profileButton = findViewById(R.id.navProfile);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent profileIntent = new Intent(signInActivity.this, profileActivity.class);
+                profileIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(profileIntent);
+            }
+        });
+
     }
 
+    private void signInDatabase(){
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_SHORT).show();
+        }
+        if (dbManager.checkUser(email, password)) {
+            Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

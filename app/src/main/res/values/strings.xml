@@ -43,5 +43,18 @@
     <string name = "birthDate">16/05/2002</string>
     <string name = "email">Farhad.Ahmed3@mail.bcu.ac.uk</string>
     <string name = "phoneNumber">012152309534</string>
+    <string name="noSignIn">You are not currently signed in.</string>
+    <string name="noPremiumStatus">You are not currently a Premium member.</string>
+    <string name="premiumStatus">You are currently a Premium member.</string>
+
+    <string name="signInTitle">Sign In</string>
+    <string name="noAccount">No account? Sign up instead.</string>
+
+    <string name="signUpTitle">Sign Up</string>
+    <string name="nameTitle">Name:</string>
+    <string name="passTitle">Password:</string>
+    <string name="emailTitle">Email:</string>
+    <string name="birthdateTitle">Birth Date:</string>
+    <string name="selectBirthDate">Select Birth Date</string>
 
 </resources>

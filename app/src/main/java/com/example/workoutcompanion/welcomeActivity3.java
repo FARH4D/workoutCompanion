@@ -83,9 +83,9 @@ public class welcomeActivity3 extends AppCompatActivity {
                     editor.putString("experience", experience);
                     editor.apply(); // Saves the edited data
 
-                    Intent welcomeIntent = new Intent(welcomeActivity3.this, welcomeActivity3.class); // Creates a new intent so the screen can be switched to the welcome screen 2.
-                    welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(welcomeIntent);
+                    Intent homeIntent = new Intent(welcomeActivity3.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                    homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(homeIntent);
                 }
             }
         });

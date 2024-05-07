@@ -84,7 +84,7 @@ public class welcomeActivity2 extends AppCompatActivity {
                     editor.putString("activity", activityValue);
                     editor.apply(); // Saves the edited data
 
-                    Intent welcomeIntent = new Intent(welcomeActivity2.this, welcomeActivity3.class); // Creates a new intent so the screen can be switched to the welcome screen 2.
+                    Intent welcomeIntent = new Intent(welcomeActivity2.this, welcomeActivity3.class); // Creates a new intent so the screen can be switched to the welcome screen 3.
                     welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(welcomeIntent);
                 }
