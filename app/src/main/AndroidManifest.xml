@@ -49,7 +49,10 @@
             android:name=".signUpActivity">
         </activity>
         <activity
-            android:name="basicWorkouts">
+            android:name=".basicWorkouts">
+        </activity>
+        <activity
+            android:name=".workingOutActivity">
         </activity>
     </application>
 
