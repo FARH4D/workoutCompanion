@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         firstTimeChecker FirstTimeChecker = new firstTimeChecker(this);
 
         if (FirstTimeChecker.isFirstTime()) {
-            //FirstTimeChecker.setFirstTime(false);
             Intent welcomeIntent = new Intent(MainActivity.this, welcomeActivity.class); // Creates a new intent so the screen can be switched to the report screen.
             welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(welcomeIntent);

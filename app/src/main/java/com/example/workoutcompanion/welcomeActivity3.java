@@ -25,6 +25,8 @@ public class welcomeActivity3 extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
+        firstTimeChecker FirstTimeChecker = new firstTimeChecker(this);
+
         Button beginner = findViewById(R.id.beginnerButton);
         Button intermediate = findViewById(R.id.intermediateButton);
         Button advanced = findViewById(R.id.advancedButton);
@@ -82,6 +84,7 @@ public class welcomeActivity3 extends AppCompatActivity {
                     SharedPreferences.Editor editor = choices.edit(); // Opens the editor for the sharedpreferences
                     editor.putString("experience", experience);
                     editor.apply(); // Saves the edited data
+                    FirstTimeChecker.setFirstTime(false);
 
                     Intent homeIntent = new Intent(welcomeActivity3.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
                     homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -56,4 +56,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         db.close(); // Closes the database
         return count == 1; // Returns true if the count is 1, which means that 1 record matches the email and password combo
     }
+
+    public Cursor getDetails(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                TABLE_USERS,
+                new String[] { KEY_USER_NAME, KEY_USER_BIRTH, KEY_USER_EMAIL }, // Include all required columns
+                KEY_USER_EMAIL + "=? AND " + KEY_USER_PASSWORD + "=?", // WHERE clause
+                new String[] { email, password }, // WHERE parameters
+                null, null, null, null
+        );
+        return cursor; // Return the cursor directly, null check will be handled by the caller
+    }
 }

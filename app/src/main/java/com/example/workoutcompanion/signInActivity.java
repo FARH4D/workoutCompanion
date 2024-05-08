@@ -2,6 +2,9 @@ package com.example.workoutcompanion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.widget.Button;
 import android.content.Intent;
@@ -100,17 +103,34 @@ public class signInActivity extends AppCompatActivity {
 
     }
 
-    private void signInDatabase(){
+
+    private void signInDatabase() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter both email and password.", Toast.LENGTH_SHORT).show();
+            return; // Early exit
         }
-        if (dbManager.checkUser(email, password)) {
-            Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
+
+        try (Cursor userData = dbManager.getDetails(email, password)) {
+            if (userData != null && userData.moveToFirst()) {
+                @SuppressLint("Range") String name = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_NAME)); // Gets the data of name and birth
+                @SuppressLint("Range") String birth = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_BIRTH)); // Suppresses the annoying -1 issue when loading data at the bottom of the code, that error would never occur because data always has to be in those columns
+
+                SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
+                SharedPreferences.Editor editor = choices.edit();
+                editor.putString("email", email);
+                editor.putString("name", name);
+                editor.putString("birth", birth);
+                editor.apply();  // Apply changes asynchronously
+
+                Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Database error: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

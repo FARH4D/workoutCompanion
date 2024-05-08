@@ -48,6 +48,9 @@
         <activity
             android:name=".signUpActivity">
         </activity>
+        <activity
+            android:name="basicWorkouts">
+        </activity>
     </application>
 
 </manifest>
