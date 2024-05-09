@@ -21,7 +21,9 @@ public class workingOutBackend{
     }
 
     private void initialiseLocations() {
-        exerciseGifs.put("Push ups", R.drawable.test1);
+        exerciseGifs.put("Push ups", R.drawable.push_up);
+        exerciseGifs.put("Squats", R.drawable.bodyweight_squat);
+        exerciseGifs.put("Pull ups", R.drawable.neutral_grip_pull_ups_shoulder_width);
     }
 
     public Integer getGif(String exercise){
