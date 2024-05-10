@@ -103,7 +103,6 @@ public class signInActivity extends AppCompatActivity {
 
     }
 
-
     private void signInDatabase() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -116,16 +115,22 @@ public class signInActivity extends AppCompatActivity {
         try (Cursor userData = dbManager.getDetails(email, password)) {
             if (userData != null && userData.moveToFirst()) {
                 @SuppressLint("Range") String name = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_NAME)); // Gets the data of name and birth
-                @SuppressLint("Range") String birth = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_BIRTH)); // Suppresses the annoying -1 issue when loading data at the bottom of the code, that error would never occur because data always has to be in those columns
+                @SuppressLint("Range") String birth = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_BIRTH)); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
+                @SuppressLint("Range") String premiumstatus = userData.getString(userData.getColumnIndex(DatabaseManager.KEY_USER_PREMIUM));
 
                 SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
                 SharedPreferences.Editor editor = choices.edit();
+
+                editor.putString("name", name); // Putting the name, email, birth date and premium status of the user into the shared preferences so they can be used easily.
                 editor.putString("email", email);
-                editor.putString("name", name);
                 editor.putString("birth", birth);
+                editor.putString("premiumstatus", premiumstatus);
                 editor.apply();  // Apply changes asynchronously
 
                 Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_SHORT).show();
+                Intent homeIntent = new Intent(signInActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+                startActivity(homeIntent);
             } else {
                 Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
             }

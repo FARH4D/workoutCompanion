@@ -10,20 +10,20 @@
     <TextView
         android:id="@+id/welcomeMessage"
         android:layout_width="384dp"
-        android:layout_height="68dp"
+        android:layout_height="85dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="@string/welcomeMessage1"
         android:textColor="#FDFDFD"
-        android:textSize="34sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/weeklyOverview"
-        android:layout_width="304dp"
-        android:layout_height="58dp"
+        android:layout_width="302dp"
+        android:layout_height="43dp"
         android:layout_marginStart="93dp"
         android:layout_marginEnd="94dp"
         android:gravity="center"
@@ -36,30 +36,44 @@
         app:layout_constraintTop_toBottomOf="@+id/welcomeMessage" />
 
     <TextView
+        android:id="@+id/statWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="100dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weeklyOverview" />
+
+    <TextView
         android:id="@+id/workoutsTitle"
         android:layout_width="167dp"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/homeWorkoutsTitle"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weeklyOverview" />
+        app:layout_constraintTop_toBottomOf="@+id/statWarning" />
 
     <TextView
         android:id="@+id/timeTitle"
         android:layout_width="136dp"
         android:layout_height="31dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/homeTimeTitle"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/workoutsTitle"
-        app:layout_constraintTop_toBottomOf="@+id/weeklyOverview" />
+        app:layout_constraintTop_toBottomOf="@+id/statWarning" />
 
     <TextView
         android:id="@+id/timeNumber"
@@ -68,7 +82,7 @@
         android:layout_marginStart="252dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="1.2"
+        android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -94,7 +108,7 @@
         android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:gravity="center"
-        android:text="@string/workoutNumber"
+        android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="38sp"
         android:textStyle="bold"
@@ -134,7 +148,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="3dp"
         android:gravity="center"
-        android:text="@string/repetitionNumber"
+        android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -163,7 +177,7 @@
         android:layout_width="300dp"
         android:layout_height="138dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -181,9 +195,9 @@
 
         <View
             android:layout_width="269dp"
-            android:layout_gravity="center"
             android:layout_height="match_parent"
-            android:background="@drawable/grey_button_overlay"/>
+            android:layout_gravity="center"
+            android:background="@drawable/grey_button_overlay" />
 
         <TextView
             android:layout_width="match_parent"
@@ -191,8 +205,8 @@
             android:gravity="center"
             android:text="Basic Workouts"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </FrameLayout>
 
@@ -201,7 +215,7 @@
         android:layout_width="300dp"
         android:layout_height="138dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="64dp"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
@@ -308,5 +322,4 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

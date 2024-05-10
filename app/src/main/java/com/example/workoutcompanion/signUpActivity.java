@@ -55,6 +55,7 @@ public class signUpActivity extends AppCompatActivity {
                 String password = editTextPass.getText().toString().trim();
                 String email = editTextEmail.getText().toString().trim();
                 String birthDate = editTextDate.getText().toString().trim();
+                String premiumstatus = "basic";
 
                 if (name.isEmpty() || password.isEmpty() || email.isEmpty() || birthDate.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please fill all fields.", Toast.LENGTH_SHORT).show();
@@ -64,7 +65,7 @@ public class signUpActivity extends AppCompatActivity {
                 else if (!email.contains("@")) {
                     Toast.makeText(getApplicationContext(), "Invalid Email.", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(name, password, email, birthDate);
+                    registerUser(name, password, email, birthDate, premiumstatus);
                 }
             }
         });
@@ -145,19 +146,23 @@ public class signUpActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void registerUser(String name, String password, String email, String birthDate){
+    private void registerUser(String name, String password, String email, String birthDate, String premiumstatus){
         DatabaseManager dbManager = new DatabaseManager(this); // Opens an instance of the DatabaseManager class
         SQLiteDatabase db = dbManager.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues(); // ContentValues is a class that lets me specify key names and put in values, it kinda works like an ArrayMap
         values.put(DatabaseManager.KEY_USER_NAME, name); // Inserts the values that the user entered into the database.
         values.put(DatabaseManager.KEY_USER_PASSWORD, password);
         values.put(DatabaseManager.KEY_USER_EMAIL, email);
         values.put(DatabaseManager.KEY_USER_BIRTH, birthDate);
+        values.put(DatabaseManager.KEY_USER_PREMIUM, premiumstatus);
 
-        long id = db.insert(DatabaseManager.TABLE_USERS, null, values);
+        long id = db.insert(DatabaseManager.TABLE_USERS, null, values); // Inserts my values into the specified table
         if (id!= -1){ // If the id is not -1 then the data was successfully inserted.
             Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show(); // Makes a pop up telling the registration was successful.
+            Intent signInIntent = new Intent(signUpActivity.this, signInActivity.class); // Creates a new intent so the screen can be switched to the sign in screen.
+            signInIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+            startActivity(signInIntent);
         } else {
             Toast.makeText(this, "The email you entered is taken. Please try another.", Toast.LENGTH_SHORT).show(); // Tells the user the email was taken.
         }

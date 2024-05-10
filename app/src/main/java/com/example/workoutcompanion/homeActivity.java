@@ -34,15 +34,17 @@ public class homeActivity extends AppCompatActivity {
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
         TextView welcomeMessage = findViewById(R.id.welcomeMessage);
+        TextView statWarning = findViewById(R.id.statWarning);
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
         String name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
 
         if (name == "null"){
             welcomeMessage.setText("Good morning!");
+            statWarning.setText("Statistics are not stored until you sign in");
+
         } else {
             welcomeMessage.setText("Good morning, " + name + "!");
         }
-
 
         FrameLayout basicButton = findViewById(R.id.button1);
         basicButton.setOnClickListener(new View.OnClickListener() {
