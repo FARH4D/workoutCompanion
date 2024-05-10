@@ -98,96 +98,94 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
-                    android:id="@+id/caloriesTitle"
+                    android:id="@+id/exercisesTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="🔥 Calories"
+                    android:layout_marginTop="30dp"
                     android:gravity="center"
+                    android:text="@string/exercisesTitle"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toStartOf="@id/timeTitle2"
+                    app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/reportTitle"
-                    app:layout_constraintEnd_toStartOf="@id/stepsTitle"
-                    app:layout_constraintHorizontal_weight="1" />
+                    app:layout_constraintTop_toBottomOf="@id/reportTitle" />
 
                 <TextView
-                    android:id="@+id/stepsTitle"
+                    android:id="@+id/timeTitle2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="🚶 Steps"
+                    android:layout_marginTop="30dp"
                     android:gravity="center"
+                    android:text="@string/homeHoursTitle"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintStart_toEndOf="@id/caloriesTitle"
-                    app:layout_constraintTop_toBottomOf="@id/reportTitle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="1" />
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@id/exercisesTitle"
+                    app:layout_constraintTop_toBottomOf="@id/reportTitle" />
 
                 <TextView
-                    android:id="@+id/caloriesNum"
+                    android:id="@+id/exercisesNum"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="237"
+                    android:text="0"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="26dp"
-                    app:layout_constraintStart_toStartOf="@id/caloriesTitle"
-                    app:layout_constraintTop_toBottomOf="@id/caloriesTitle"
-                    app:layout_constraintEnd_toEndOf="@id/caloriesTitle"
+                    app:layout_constraintStart_toStartOf="@id/exercisesTitle"
+                    app:layout_constraintTop_toBottomOf="@id/exercisesTitle"
+                    app:layout_constraintEnd_toEndOf="@id/exercisesTitle"
                     app:layout_constraintHorizontal_weight="1" />
 
                 <TextView
-                    android:id="@+id/stepsNum"
+                    android:id="@+id/timeNum"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="1359"
+                    android:text="0"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="30dp"
-                    app:layout_constraintStart_toStartOf="@id/stepsTitle"
-                    app:layout_constraintTop_toBottomOf="@id/stepsTitle"
-                    app:layout_constraintEnd_toEndOf="@id/stepsTitle"
+                    app:layout_constraintStart_toStartOf="@id/timeTitle2"
+                    app:layout_constraintTop_toBottomOf="@id/timeTitle2"
+                    app:layout_constraintEnd_toEndOf="@id/timeTitle2"
                     app:layout_constraintHorizontal_weight="1" />
 
                 <TextView
-                    android:id="@+id/caloriesSubtitle"
+                    android:id="@+id/exercisesSubtitle"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Calories Burned (kcal)"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:text="@string/exercisesCompletedTitle"
                     android:textColor="#FF0000"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="@id/caloriesNum"
-                    app:layout_constraintTop_toBottomOf="@id/caloriesNum"
-                    app:layout_constraintEnd_toEndOf="@id/caloriesNum"
-                    />
+                    app:layout_constraintEnd_toEndOf="@id/exercisesNum"
+                    app:layout_constraintStart_toStartOf="@id/exercisesNum"
+                    app:layout_constraintTop_toBottomOf="@id/exercisesNum" />
 
                 <TextView
-                    android:id="@+id/stepsSubtitle"
+                    android:id="@+id/timeSubtitle"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Steps Taken"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:text="@string/homeHoursTitle"
                     android:textColor="#FF0000"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="@id/stepsNum"
-                    app:layout_constraintTop_toBottomOf="@id/stepsNum"
-                    app:layout_constraintEnd_toEndOf="@id/stepsNum"
-                    />
+                    app:layout_constraintEnd_toEndOf="@id/timeNum"
+                    app:layout_constraintStart_toStartOf="@id/timeNum"
+                    app:layout_constraintTop_toBottomOf="@id/timeNum" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

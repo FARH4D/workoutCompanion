@@ -2,7 +2,9 @@ package com.example.workoutcompanion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.widget.Button;
 import android.content.Intent;
@@ -36,15 +38,32 @@ public class homeActivity extends AppCompatActivity {
 
         TextView welcomeMessage = findViewById(R.id.welcomeMessage);
         TextView statWarning = findViewById(R.id.statWarning);
-        SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
+        SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE); // Gets the values of the shared preferences
         String name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
+        String email = choices.getString("email", "null");
         String premiumStatus = choices.getString("premiumstatus", "null");
 
-        if (name == "null"){
+        if ("null".equals(name)){ // Determines if the user has an account or not
             welcomeMessage.setText("Good morning!");
             statWarning.setText("Statistics are not stored until you sign in");
-        } else {
+        } else { // Condition for it the user has an account
             welcomeMessage.setText("Good morning, " + name + "!");
+
+            DatabaseManager db = new DatabaseManager(this);
+            Cursor weeklyStats = db.getWeekly(email);
+
+            if (weeklyStats.moveToFirst()){ // Move to first checks if there is any records returned, if there are it will return true
+                @SuppressLint("Range") int totalWorkouts = weeklyStats.getInt(weeklyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
+                @SuppressLint("Range") int totalReps = weeklyStats.getInt(weeklyStats.getColumnIndex("total_reps")); // Gets the values of the weekly totals from the SQLite database using the weeklyStats function
+                @SuppressLint("Range") int totalDuration = weeklyStats.getInt(weeklyStats.getColumnIndex("total_duration"));
+
+                TextView workoutNumber = findViewById(R.id.workoutNumber);
+                workoutNumber.setText(String.valueOf(totalWorkouts));
+                TextView repetitionNumber = findViewById(R.id.repetitionNumber);
+                repetitionNumber.setText(String.valueOf(totalReps));
+                TextView timeNumber = findViewById(R.id.timeNumber);
+                timeNumber.setText(String.valueOf(totalDuration));
+            }
         }
 
         FrameLayout basicButton = findViewById(R.id.button1);
@@ -101,10 +120,5 @@ public class homeActivity extends AppCompatActivity {
             }
         });
 
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(0, 0);
     }
 }

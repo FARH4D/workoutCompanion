@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,10 @@ import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class workingOutActivity extends AppCompatActivity {
     private Handler workoutHandler = new Handler();
@@ -29,6 +33,7 @@ public class workingOutActivity extends AppCompatActivity {
     private int exerciseIndex = 0; // Initialise all these variables at the start so they can be used in every function
     private ImageView workoutGif;
     private TextView timerText;
+    private Button goHome;
     private int timeRemaining;
     private boolean preparing = true;
     private boolean rest = true;
@@ -50,7 +55,7 @@ public class workingOutActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
                                                                                                                                      // FLAG LIGHT was added because the design will have a white background, so without this the text on the status bar would be white and unreadable
-
+        goHome = findViewById(R.id.goHome);
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
         String gender = choices.getString("gender", "null"); // Gets the gender and activity level of the user to adjust the amount of reps needed.
         String experience = choices.getString("experience", "null");
@@ -77,6 +82,15 @@ public class workingOutActivity extends AppCompatActivity {
 
         prepare();
 
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(workingOutActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+                startActivity(homeIntent);
+            }
+        });
+
     }
 
     private void prepare(){
@@ -102,11 +116,18 @@ public class workingOutActivity extends AppCompatActivity {
         } else {
             exerciseTitle.setText("Good job you completed the workout!");
             exerciseReps.setText("");
-            TextView label1 = findViewById(R.id.textView3);
-            label1.setText("Time " + String.valueOf(totalTime));
-            TextView label2 = findViewById(R.id.textView4);
-            label2.setText("Reps " + String.valueOf(totalReps));
             timerText.setText("");
+
+            goHome.setVisibility(View.VISIBLE);
+
+            SharedPreferences prefs = getSharedPreferences("userChoices", MODE_PRIVATE);
+            String email = prefs.getString("email", "null");
+            if (!"null".equals(email)){
+                DatabaseManager db = new DatabaseManager(this);
+                String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                int totalRepsNew = (int) Math.round(totalReps);
+                db.insertWorkout(email, currentDate, totalRepsNew, exerciseIndex, totalTime);
+            }
         }
     }
 
@@ -159,7 +180,6 @@ public class workingOutActivity extends AppCompatActivity {
                 totalTime += (timeRemaining - 1); // Adds to the total time, take away 1 second because the actual time is always 1 second less
                 preparing = true;
                 updateTimer();
-
             } else {
                 rest = true;
                 exerciseLoop();

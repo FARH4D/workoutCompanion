@@ -41,6 +41,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 "user_email TEXT," +
                 "date TEXT," +
                 "reps INTEGER," +
+                "exercises INTEGER," +
                 "duration INTEGER" +
                 ")";
 
@@ -80,12 +81,13 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor; // Return the cursor directly, null check will be handled by the caller
     }
 
-    public void insertWorkout(String email, String date, int reps, int duration){
+    public void insertWorkout(String email, String date, int reps, int exercises, int duration){
         SQLiteDatabase db2 = this.getWritableDatabase();
         ContentValues values2 = new ContentValues(); // Opens a content values instance so I can insert data with a key and a value (the key will be the column the data goes into).
         values2.put("user_email", email);
         values2.put("date", date);
         values2.put("reps", reps);
+        values2.put("exercises", exercises);
         values2.put("duration", duration);
 
         db2.insert("Workouts", null, values2); // Inserts my data into the table
@@ -94,25 +96,25 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public Cursor getDaily(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT date(date) AS day," +
-                " COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration" +
-                " FROM Workouts WHERE user_email = ?" +
-                " GROUP BY day ORDER BY day DESC", new String[]{email});
+        return db.rawQuery("SELECT date(date) AS day, " +
+                "COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration, SUM(exercises) AS total_exercises " +
+                "FROM Workouts WHERE user_email = ? AND date(date) = date('now', 'localtime') " +
+                "GROUP BY day", new String[]{email});
     }
 
     public Cursor getWeekly(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT strftime('%Y-%W', date) AS week," +
-                " COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration" +
-                " FROM Workouts WHERE user_email = ?" +
-                " GROUP BY week ORDER BY week DESC", new String[]{email});
+        return db.rawQuery("SELECT strftime('%Y-%W', date) AS week, " +
+                "COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration, SUM(exercises) AS total_exercises " +
+                "FROM Workouts WHERE user_email = ? AND strftime('%Y-%W', date) = strftime('%Y-%W', 'now', 'localtime') " +
+                "GROUP BY week", new String[]{email});
     }
 
     public Cursor getMonthly(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT strftime('%Y-%m', date) AS month," +
-                " COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration" +
-                " FROM Workouts WHERE user_email = ?" +
-                " GROUP BY month ORDER BY month DESC", new String[]{email});
+        return db.rawQuery("SELECT strftime('%Y-%m', date) AS month, " +
+                "COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration, SUM(exercises) AS total_exercises " +
+                "FROM Workouts WHERE user_email = ? AND strftime('%Y-%m', date) = strftime('%Y-%m', 'now', 'localtime') " +
+                "GROUP BY month", new String[]{email});
     }
 }

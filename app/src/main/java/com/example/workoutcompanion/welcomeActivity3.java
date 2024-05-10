@@ -84,6 +84,8 @@ public class welcomeActivity3 extends AppCompatActivity {
                     SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE); // Open a sharedpreferences instance to save the userchoices so they can be used later
                     SharedPreferences.Editor editor = choices.edit(); // Opens the editor for the sharedpreferences
                     editor.putString("experience", experience);
+                    editor.putString("name", "null");
+                    editor.putString("email", "null");
                     editor.apply(); // Saves the edited data
                     FirstTimeChecker.setFirstTime(false);
 

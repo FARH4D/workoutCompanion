@@ -43,7 +43,7 @@ public class profileActivity extends AppCompatActivity {
         name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
 
         // This if statement assigns the correct values to the textviews on the profile page, if the user is not signed in they are treated as a guest and the textviews showcase this.
-        if (name != "null"){
+        if (!"null".equals(name)){
             textView.setText(name);
             profileName.setText(name);
             profileBirth.setText(choices.getString("birth", "null"));
@@ -54,7 +54,7 @@ public class profileActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name == "null"){
+                if ("null".equals(name)){
                     Intent signInIntent = new Intent(profileActivity.this, signInActivity.class);
                     signInIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(signInIntent);
@@ -64,8 +64,8 @@ public class profileActivity extends AppCompatActivity {
                     SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
                     SharedPreferences.Editor editor = choices.edit();
 
-                    editor.putString("name", "null"); // Putting the name, email, birth date and premium status of the user into the shared preferences so they can be used easily.
-                    editor.putString("email", "");
+                    editor.putString("name", "null"); // Resetting the values of the items in the shared preferences
+                    editor.putString("email", "null");
                     editor.putString("birth", "");
                     editor.putString("premiumstatus", "basic");
                     editor.apply();  // Apply changes asynchronously
