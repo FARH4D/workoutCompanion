@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class homeActivity extends AppCompatActivity {
 
@@ -37,11 +38,11 @@ public class homeActivity extends AppCompatActivity {
         TextView statWarning = findViewById(R.id.statWarning);
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
         String name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
+        String premiumStatus = choices.getString("premiumstatus", "null");
 
         if (name == "null"){
             welcomeMessage.setText("Good morning!");
             statWarning.setText("Statistics are not stored until you sign in");
-
         } else {
             welcomeMessage.setText("Good morning, " + name + "!");
         }
@@ -53,6 +54,20 @@ public class homeActivity extends AppCompatActivity {
                 Intent basicIntent = new Intent(homeActivity.this, basicWorkouts.class);
                 basicIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(basicIntent);
+            }
+        });
+
+        FrameLayout premiumButton = findViewById(R.id.button2);
+        premiumButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (premiumStatus == "null" | premiumStatus == "basic"){
+                    Toast.makeText(homeActivity.this, "You are not a premium member", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent premiumIntent = new Intent(homeActivity.this, premiumWorkouts.class);
+                    premiumIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(premiumIntent);
+                }
             }
         });
 

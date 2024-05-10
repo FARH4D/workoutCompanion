@@ -34,6 +34,7 @@
     <string name="elite">Elite: 40 Push ups+</string>
 
     <string name="basicWorkoutsTitle">Basic Workouts</string>
+    <string name="premiumWorkoutsTitle">Premium Workouts</string>
 
     <string name="noPremiumStatus">You are not currently a Premium member.</string>
     <string name="premiumStatus">You are currently a Premium member.</string>
