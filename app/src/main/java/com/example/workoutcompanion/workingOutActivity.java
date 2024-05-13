@@ -29,7 +29,6 @@ import java.util.Locale;
 public class workingOutActivity extends AppCompatActivity {
     private Handler workoutHandler = new Handler();
     private ArrayList<String> exercises;
-    private Runnable run;
     private int exerciseIndex = 0; // Initialise all these variables at the start so they can be used in every function
     private ImageView workoutGif;
     private TextView timerText;

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class exerciseActivity extends AppCompatActivity {
     private boolean isFront = true;
     @Override
@@ -66,6 +68,185 @@ public class exerciseActivity extends AppCompatActivity {
             }
         });
 
+        TextView shouldersLabel = findViewById(R.id.shoulderLabel);
+        shouldersLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Shoulders");
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView chestLabel = findViewById(R.id.chestLabel);
+        chestLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Chest");
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView absLabel = findViewById(R.id.absLabel);
+        absLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView bicepsLabel = findViewById(R.id.bicepLabel);
+        bicepsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView quadsLabel = findViewById(R.id.quadLabel);
+        quadsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView trapsLabel = findViewById(R.id.trapLabel);
+        trapsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView glutesLabel = findViewById(R.id.gluteLabel);
+        glutesLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView tricepsLabel = findViewById(R.id.tricepLabel);
+        tricepsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView latsLabel = findViewById(R.id.latLabel);
+        latsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView hamstringsLabel = findViewById(R.id.hamstringLabel);
+        hamstringsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        TextView calvesLabel = findViewById(R.id.calfLabel);
+        calvesLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Push ups");
+                exercises.add("Squats");
+                exercises.add("Pull ups");
+
+                Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
+                exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                exerciseList.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseList);
+            }
+        });
+
+        
         TextView homeButton = findViewById(R.id.navHome); // Gets the id of the home button on the bottom nav bar.
         homeButton.setOnClickListener(new View.OnClickListener() { // Creates an onClick listener for the home button so the application can detect when it has been clicked.
             @Override

@@ -54,6 +54,12 @@
         <activity
             android:name=".workingOutActivity">
         </activity>
+        <activity
+            android:name=".exerciseDescription">
+        </activity>
+        <activity
+            android:name=".exercisesList">
+        </activity>
     </application>
 
 </manifest>
