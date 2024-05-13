@@ -213,7 +213,6 @@
 
     </FrameLayout>
 
-
     <!-- This is the layout for my navbar -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomBar"

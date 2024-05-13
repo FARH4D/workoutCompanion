@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class reportActivity extends AppCompatActivity {
 
     @Override
@@ -33,28 +35,122 @@ public class reportActivity extends AppCompatActivity {
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE); // Gets the values of the shared preferences
         String name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
         String email = choices.getString("email", "null");
+        String experience = choices.getString("experience", "null");
 
         if (name != "null") { // Determines if the user has an account or not
             DatabaseManager db = new DatabaseManager(this);
-            Cursor dailyStats = db.getWeekly(email);
+            Cursor dailyStats = db.getDaily(email); // Opens a cursor called dailyStats to retrieve the data
 
-            if (dailyStats.moveToFirst()) { // Move to first checks if there is any records returned, if there are it will return true
+            if (dailyStats.moveToFirst()) { // Move to first checks if there are any records returned, if there are it will return true
                 @SuppressLint("Range") int totalWorkouts = dailyStats.getInt(dailyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
-                @SuppressLint("Range") int totalReps = dailyStats.getInt(dailyStats.getColumnIndex("total_reps")); // Gets the values of the weekly totals from the SQLite database using the weeklyStats function
+                @SuppressLint("Range") int totalReps = dailyStats.getInt(dailyStats.getColumnIndex("total_reps")); // Gets the values of the daily totals from the SQLite database using the dailyStats function
                 @SuppressLint("Range") int totalExercises = dailyStats.getInt(dailyStats.getColumnIndex("total_exercises"));
                 @SuppressLint("Range") int totalDuration = dailyStats.getInt(dailyStats.getColumnIndex("total_duration"));
 
+                TextView middleText = findViewById(R.id.middleText);
+                if ("beginner".equals(experience)){
+                    experience = " beginner.";
+                } else if ("intermediate".equals(experience)){ // Formats the experience level so it can be added to a sentence in a more readable format
+                    experience = "t an intermediate level.";
+                } else if ("advanced".equals(experience)) {
+                    experience = "t an advanced level.";
+                } else if ("elite".equals(experience)) {
+                    experience = "t an elite level.";
+                }
 
+                middleText.setText("You are a" + experience);
+
+                // Takes the ids of the labels and then assigns the correct values to the label for the user to see
                 exercisesNum.setText(String.valueOf(totalExercises));
                 timeNum.setText(String.valueOf(totalDuration));
-//                TextView workoutNumber = findViewById(R.id.workoutNumber);
-//                workoutNumber.setText(String.valueOf(totalWorkouts));
-//                TextView repetitionNumber = findViewById(R.id.repetitionNumber);
-//                repetitionNumber.setText(String.valueOf(totalReps));
-//                TextView timeNumber = findViewById(R.id.timeNumber);
-//                timeNumber.setText(String.valueOf(totalDuration));
-            } else { // Condition for it the user has an account
+                TextView workoutNumber = findViewById(R.id.workoutsTitle2);
+                workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
+                TextView repetitionNumber = findViewById(R.id.repetitionsTitle2);
+                repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
+                TextView workoutStreak = findViewById(R.id.workoutStreakTitle);
+                workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
 
+                // Gets the ids of the labels so they can be used when the user switches between data viewing
+                TextView reportTitle = findViewById(R.id.reportTitle);
+                TextView navMonth = findViewById(R.id.navMonth);
+                TextView navWeek = findViewById(R.id.navWeek);
+                TextView navDay = findViewById(R.id.navDay);
+                dailyStats.close();
+
+                navMonth.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Cursor monthlyStats = db.getMonthly(email);
+                        if (monthlyStats != null && monthlyStats.moveToFirst()) { // This checks that there is actually data beforehand. One possible case is that if the user creates an account and checks the report screen before doing a workout there could be a possible crash.
+                            @SuppressLint("Range") int totalWorkouts = monthlyStats.getInt(monthlyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
+                            @SuppressLint("Range") int totalReps = monthlyStats.getInt(monthlyStats.getColumnIndex("total_reps")); // Gets the values of the monthly totals from the SQLite database using the monthlyStats function
+                            @SuppressLint("Range") int totalExercises = monthlyStats.getInt(monthlyStats.getColumnIndex("total_exercises"));
+                            @SuppressLint("Range") int totalDuration = monthlyStats.getInt(monthlyStats.getColumnIndex("total_duration"));
+
+                            navMonth.setTextColor(Color.parseColor("#FF0000")); // Changes the colour of the text so the user can see even more clearly which data they are viewing
+                            navWeek.setTextColor(Color.parseColor("#FFFFFF"));
+                            navDay.setTextColor(Color.parseColor("#FFFFFF"));
+
+                            reportTitle.setText("This Month");
+                            exercisesNum.setText(String.valueOf(totalExercises));
+                            timeNum.setText(String.valueOf(totalDuration));
+                            workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
+                            repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
+                            workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
+                            monthlyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
+                        }
+                    }
+                });
+
+                navWeek.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Cursor weeklyStats = db.getWeekly(email);
+                        if (weeklyStats != null && weeklyStats.moveToFirst()) {
+                            @SuppressLint("Range") int totalWorkouts = weeklyStats.getInt(weeklyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
+                            @SuppressLint("Range") int totalReps = weeklyStats.getInt(weeklyStats.getColumnIndex("total_reps")); // Gets the values of the weekly totals from the SQLite database using the weeklyStats function
+                            @SuppressLint("Range") int totalExercises = weeklyStats.getInt(weeklyStats.getColumnIndex("total_exercises"));
+                            @SuppressLint("Range") int totalDuration = weeklyStats.getInt(weeklyStats.getColumnIndex("total_duration"));
+
+                            navMonth.setTextColor(Color.parseColor("#FFFFFF")); // Changes the colour of the text so the user can see even more clearly which data they are viewing
+                            navWeek.setTextColor(Color.parseColor("#FF0000"));
+                            navDay.setTextColor(Color.parseColor("#FFFFFF"));
+
+                            reportTitle.setText("This Week");
+                            exercisesNum.setText(String.valueOf(totalExercises));
+                            timeNum.setText(String.valueOf(totalDuration));
+                            workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
+                            repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
+                            workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
+                            weeklyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
+                        }
+                    }
+                });
+
+                navDay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Cursor dailyStats = db.getDaily(email); // The cursor was closed earlier to save data so it had to be opened again
+                        if (dailyStats != null && dailyStats.moveToFirst()) {
+                            @SuppressLint("Range") int totalWorkouts = dailyStats.getInt(dailyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
+                            @SuppressLint("Range") int totalReps = dailyStats.getInt(dailyStats.getColumnIndex("total_reps")); // Gets the values of the daily totals from the SQLite database using the dailyStats function
+                            @SuppressLint("Range") int totalExercises = dailyStats.getInt(dailyStats.getColumnIndex("total_exercises"));
+                            @SuppressLint("Range") int totalDuration = dailyStats.getInt(dailyStats.getColumnIndex("total_duration"));
+
+                            navMonth.setTextColor(Color.parseColor("#FFFFFF")); // Changes the colour of the text so the user can see even more clearly which data they are viewing
+                            navWeek.setTextColor(Color.parseColor("#FFFFFF"));
+                            navDay.setTextColor(Color.parseColor("#FF0000"));
+                            
+                            reportTitle.setText("Today");
+                            exercisesNum.setText(String.valueOf(totalExercises));
+                            timeNum.setText(String.valueOf(totalDuration));
+                            workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
+                            repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
+                            workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
+                            dailyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
+                        }
+                    }
+                });
             }
         }
 

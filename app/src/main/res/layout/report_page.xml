@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="#313030">
 
+
+    <!--  So the screen can be scrollable if needed   -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,6 +18,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <!--  The scroll view is different so to use the same design methods I have been using for
+              my other screens I put constraint layouts within the scroll view  -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/topNavBar"
                 android:layout_width="match_parent"
@@ -118,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:text="@string/homeHoursTitle"
+                    android:text="@string/homeTimeTitle"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold"
@@ -213,6 +217,18 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:background="@drawable/grey_button_overlay" />
+
+                    <TextView
+                        android:id="@+id/middleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="21sp"
+                        android:text="@string/experienceTitle">
+
+                    </TextView>
                 </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -274,14 +290,14 @@
                     android:id="@+id/workoutStreakTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/workoutStreakTitle"
+                    android:layout_marginTop="100dp"
                     android:gravity="center"
+                    android:text="@string/workoutStreakTitle"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="80dp"
-                    app:layout_constraintStart_toEndOf="@id/placeholder1"
                     app:layout_constraintEnd_toEndOf="@id/placeholder1"
+                    app:layout_constraintStart_toEndOf="@id/placeholder1"
                     app:layout_constraintTop_toBottomOf="@id/placeholder1"
 
                     />
