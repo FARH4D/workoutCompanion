@@ -32,7 +32,7 @@ public class basicWorkouts extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
                 exercises.add("Push ups");
-                exercises.add("Squats");
+                exercises.add("Bodyweight Squats");
                 exercises.add("Pull ups");
 
                 Intent basicIntent1 = new Intent(basicWorkouts.this, workingOutActivity.class);

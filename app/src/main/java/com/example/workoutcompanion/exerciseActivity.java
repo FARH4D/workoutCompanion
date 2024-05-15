@@ -74,9 +74,12 @@ public class exerciseActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
                 exercises.add("Shoulders");
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Barbell Incline Bench Press");
+                exercises.add("Kettlebell Overhead Squats");
+                exercises.add("Kettlebell Squat Cleans");
+                exercises.add("Monkey Rows");
+                exercises.add("Russian Kettlebell Swings");
+                exercises.add("Shoulder Push ups");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -91,9 +94,14 @@ public class exerciseActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
                 exercises.add("Chest");
+                exercises.add("Band Chest Press");
+                exercises.add("Barbell Bench Press");
+                exercises.add("Burpee Push ups");
+                exercises.add("Cable Crossovers");
                 exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Ring Dips");
+                exercises.add("Weighted Dips");
+                exercises.add("Wide Arm Push ups");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -107,9 +115,15 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Abs");
+                exercises.add("Bicycle Crunches");
+                exercises.add("Decline Sit ups");
+                exercises.add("Elbow To Knee Sit ups");
+                exercises.add("Lying Leg Raises");
+                exercises.add("Russian Kettlebell Swings");
+                exercises.add("Russian Twists");
+                exercises.add("V Sit ups");
+                exercises.add("Windshield Wipers");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -123,9 +137,14 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Biceps");
+                exercises.add("Barbell Bent Over Rows");
+                exercises.add("Chin ups");
+                exercises.add("Dumbbell Concentration Curls");
+                exercises.add("EZ Bar Preacher Curls");
+                exercises.add("Incline Dumbbell Curls");
+                exercises.add("Inverted Rows");
+                exercises.add("Neutral Grip Pull ups");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -139,9 +158,17 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Quads");
+                exercises.add("Barbell Squats");
+                exercises.add("Bodyweight Lunges");
+                exercises.add("Bodyweight Squats");
+                exercises.add("Front Squats");
+                exercises.add("Goblet Wall Sit");
+                exercises.add("Kettlebell Overhead Squats");
+                exercises.add("Single Leg Wall Sit");
+                exercises.add("Squat Jumps");
+                exercises.add("Wall Sit");
+                exercises.add("Zercher Squats");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -155,9 +182,9 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Traps");
+                exercises.add("Monkey Rows");
+                exercises.add("Shoulder Push ups");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -171,9 +198,16 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Glutes");
+                exercises.add("Barbell Squats");
+                exercises.add("Bodyweight Lunges");
+                exercises.add("Bodyweight Squats");
+                exercises.add("Dumbbell Squats");
+                exercises.add("Hamstring Raises");
+                exercises.add("Goblet Wall Sit");
+                exercises.add("Kettlebell Overhead Squats");
+                exercises.add("Kettlebell Squat Cleans");
+                exercises.add("Squat Jumps");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -187,9 +221,17 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Triceps");
+                exercises.add("Band Chest Press");
+                exercises.add("Barbell Bench Press");
+                exercises.add("Barbell Incline Bench Press");
+                exercises.add("Burpee Push ups");
+                exercises.add("Close Grip Push ups");
+                exercises.add("Overhead Tricep Stretch");
                 exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Ring Dips");
+                exercises.add("Shoulder Push ups");
+                exercises.add("Weighted Dips");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -203,9 +245,15 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Lats");
+                exercises.add("Barbell Bent Over Rows");
+                exercises.add("Barbell Rack Pulls");
+                exercises.add("Chin ups");
+                exercises.add("Close Grip Band Rows");
+                exercises.add("Close Grip Lat Pulldowns");
+                exercises.add("Inverted Rows");
+                exercises.add("Neutral Grip Pull Ups");
+                exercises.add("Pendlay Rows");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -219,9 +267,10 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Hamstrings");
+                exercises.add("Bodyweight Lunges");
+                exercises.add("Hamstring Raises");
+                exercises.add("Nordic Hamstring Curls");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -235,9 +284,9 @@ public class exerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
-                exercises.add("Push ups");
-                exercises.add("Squats");
-                exercises.add("Pull ups");
+                exercises.add("Calves");
+                exercises.add("Goblet Wall Sit");
+                exercises.add("Single Leg Wall Sit");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);
                 exerciseList.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
@@ -276,8 +325,5 @@ public class exerciseActivity extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
-
-
-
     }
 }

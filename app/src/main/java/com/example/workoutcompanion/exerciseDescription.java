@@ -1,16 +1,23 @@
 package com.example.workoutcompanion;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+
 public class exerciseDescription extends AppCompatActivity {
 
-    private boolean isFront = true;
+    private ArrayList<String> exercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +29,15 @@ public class exerciseDescription extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
+        Intent intent = getIntent(); // Gets the intent that started the activity
+        exercise = intent.getStringArrayListExtra("exerciseChosen"); // Gets the array from the intent and puts it into an arrayList called exercise
 
+        TextView exerciseTitle = findViewById(R.id.exerciseTitle);
+        exerciseTitle.setText(exercise.get(0));
+
+        ImageView workoutGif = findViewById(R.id.exerciseGif);
+        Integer gifInt = new workingOutBackend().getGif(exercise.get(0)); // Getting the location of the gif with the number assigned to it
+        Glide.with(this).asGif().load(gifInt).into(workoutGif); // Using the glide library to play the gifs
 
     }
 }
