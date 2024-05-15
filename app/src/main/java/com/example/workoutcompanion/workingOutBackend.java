@@ -20,7 +20,7 @@ public class workingOutBackend{
         initialiseLocations();
     }
 
-    private void initialiseLocations() {
+    private void initialiseLocations() { // Adding keys to the hash map with an assigned gif so that the gifs can be retrieved depending on the exercise needed.
         exerciseGifs.put("Push ups", R.drawable.push_up);
         exerciseGifs.put("Bodyweight Squats", R.drawable.bodyweight_squat);
         exerciseGifs.put("Pull ups", R.drawable.neutral_grip_pull_ups_shoulder_width);
@@ -67,7 +67,6 @@ public class workingOutBackend{
         exerciseGifs.put("Wide Arm Push ups", R.drawable.wide_arm_push_ups);
         exerciseGifs.put("Windshield Wipers", R.drawable.windshield_wipers);
         exerciseGifs.put("Zercher Squats", R.drawable.zercher_squat);
-
     }
     public Integer getGif(String exercise){
         return exerciseGifs.getOrDefault(exercise, null); // getOrDefault gets the value from the map by using the key and if the does not exist it will be null (this wouldnt ever happen though)

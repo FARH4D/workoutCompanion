@@ -48,12 +48,14 @@ public class reportActivity extends AppCompatActivity {
         String email = choices.getString("email", "null");
         String experience = choices.getString("experience", "null");
 
+
         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(0));
         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(0));
-        workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  " + String.valueOf(0));
 
         if (!"null".equals(name)) { // Determines if the user has an account or not
             DatabaseManager db = new DatabaseManager(this);
+            int currentStreak = db.getStreak(email);
+            workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  " + String.valueOf(currentStreak));
             Cursor dailyStats = db.getDaily(email); // Opens a cursor called dailyStats to retrieve the data
 
             if (dailyStats.moveToFirst()) { // Move to first checks if there are any records returned, if there are it will return true
@@ -68,7 +70,7 @@ public class reportActivity extends AppCompatActivity {
 
                 workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                 repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
-                workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
+
             }
             TextView middleText = findViewById(R.id.middleText);
             if ("beginner".equals(experience)){
@@ -97,7 +99,6 @@ public class reportActivity extends AppCompatActivity {
                     timeNum.setText(String.valueOf(0));
                     workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(0));
                     repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(0));
-                    workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  " + String.valueOf(0));
 
                     if (monthlyStats != null && monthlyStats.moveToFirst()) { // This checks that there is actually data beforehand. One possible case is that if the user creates an account and checks the report screen before doing a workout there could be a possible crash.
                         @SuppressLint("Range") int totalWorkouts = monthlyStats.getInt(monthlyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
@@ -109,7 +110,6 @@ public class reportActivity extends AppCompatActivity {
                         timeNum.setText(String.valueOf(totalDuration));
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
-                        workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
                         monthlyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
                     }
                 }
@@ -127,7 +127,6 @@ public class reportActivity extends AppCompatActivity {
                     timeNum.setText(String.valueOf(0));
                     workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(0));
                     repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(0));
-                    workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  " + String.valueOf(0));
 
                     if (weeklyStats != null && weeklyStats.moveToFirst()) {
                         @SuppressLint("Range") int totalWorkouts = weeklyStats.getInt(weeklyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
@@ -139,7 +138,6 @@ public class reportActivity extends AppCompatActivity {
                         timeNum.setText(String.valueOf(totalDuration));
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
-                        workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
                         weeklyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
                     }
                 }
@@ -157,7 +155,6 @@ public class reportActivity extends AppCompatActivity {
                     timeNum.setText(String.valueOf(0));
                     workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(0));
                     repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(0));
-                    workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  " + String.valueOf(0));
 
                     if (dailyStats != null && dailyStats.moveToFirst()) {
                         @SuppressLint("Range") int totalWorkouts = dailyStats.getInt(dailyStats.getColumnIndex("total_workouts")); // Suppresses the annoying -1 issue when loading data, that error would never occur because data always has to be in those columns
@@ -169,7 +166,6 @@ public class reportActivity extends AppCompatActivity {
                         timeNum.setText(String.valueOf(totalDuration));
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
-                        workoutStreak.setText("\uD83D\uDCC8 Workout Streak:\n  ");
                         dailyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
                     }
                 }

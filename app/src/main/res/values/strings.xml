@@ -58,4 +58,10 @@
     <string name="birthdateTitle">Birth Date:</string>
     <string name="selectBirthDate">Select Birth Date</string>
 
+    <string name="premiumTitle">Buy Premium</string>
+    <string name="cardNum">Card Number</string>
+    <string name="billingAddress">Billing Address</string>
+    <string name="CVV">CVV</string>
+    <string name="City">City</string>
+
 </resources>

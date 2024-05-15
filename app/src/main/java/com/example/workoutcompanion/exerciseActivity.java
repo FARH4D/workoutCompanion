@@ -252,7 +252,7 @@ public class exerciseActivity extends AppCompatActivity {
                 exercises.add("Close Grip Band Rows");
                 exercises.add("Close Grip Lat Pulldowns");
                 exercises.add("Inverted Rows");
-                exercises.add("Neutral Grip Pull Ups");
+                exercises.add("Neutral Grip Pull ups");
                 exercises.add("Pendlay Rows");
 
                 Intent exerciseList = new Intent(exerciseActivity.this, exercisesList.class);

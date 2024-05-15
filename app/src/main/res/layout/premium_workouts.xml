@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/basic_workout1" />
+            android:src="@drawable/premium_workout1" />
 
         <View
             android:layout_width="269dp"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Full Body Blaster"
+            android:text="Pull Workout"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -74,7 +74,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/basic_workout2" />
+            android:src="@drawable/premium_workout3" />
 
         <View
             android:layout_width="269dp"
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Upper Body Workout"
+            android:text="Upper Body Shredder"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -110,7 +110,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scaleType="fitXY"
-            android:src="@drawable/basic_workout3" />
+            android:src="@drawable/premium_workout2" />
 
         <View
             android:layout_width="269dp"
@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Push Workout"
+            android:text="Grappling Strength"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />

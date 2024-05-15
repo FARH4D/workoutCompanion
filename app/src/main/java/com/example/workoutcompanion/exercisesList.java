@@ -3,22 +3,14 @@ package com.example.workoutcompanion;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -43,11 +35,11 @@ public class exercisesList extends AppCompatActivity {
         TextView exerciseTitle = findViewById(R.id.exerciseTitle);
         exerciseTitle.setText(exercises.get(0));
 
-        for (int i = 1; i < exercises.size(); i++){
-            Button button = new Button(this);
-            button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        for (int i = 1; i < exercises.size(); i++){ // A loop that creates buttons for each of the exercises in the array
+            Button button = new Button(this); // This creates a button
+            button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)); // Sets out the parameters of the button, how it is layed out and presented
             button.setText(exercises.get(i));
-            int finalI = i; // Variable has to be final if we want to access it from the loop
+            int finalI = i; // Variable has to be final if i want to access it from the loop
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -56,12 +48,21 @@ public class exercisesList extends AppCompatActivity {
 
                     Intent exerciseIntent = new Intent(exercisesList.this, exerciseDescription.class);
                     exerciseIntent.putStringArrayListExtra("exerciseChosen", exerciseChosen); // Puts the exercises array into the intent being launched
-                    exerciseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(exerciseIntent);
+                    startActivity(exerciseIntent); // I don't have flags for clearing the task because i want the user to have the ability to go back
                 }
             });
             container.addView(button);
         }
+
+        TextView goBack = findViewById(R.id.goBack);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent exerciseIntent = new Intent(exercisesList.this, exerciseActivity.class);
+                exerciseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(exerciseIntent);
+            }
+        });
 
         TextView homeButton = findViewById(R.id.navHome); // Gets the id of the home button on the bottom nav bar.
         homeButton.setOnClickListener(new View.OnClickListener() { // Creates an onClick listener for the home button so the application can detect when it has been clicked.

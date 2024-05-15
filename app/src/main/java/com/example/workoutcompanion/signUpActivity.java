@@ -33,7 +33,7 @@ public class signUpActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
-        EditText editTextName = findViewById(R.id.editTextName);
+        EditText editTextName = findViewById(R.id.editTextCard);
         EditText editTextPass = findViewById(R.id.editTextPass);
         EditText editTextEmail = findViewById(R.id.editTextEmail);
         editTextDate = findViewById(R.id.editTextDate);

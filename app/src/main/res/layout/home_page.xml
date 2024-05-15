@@ -224,8 +224,8 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <!--  The text colour of the current page is highlighted red on the navbar,
-              this works as an active state indication so the user knows what page
-              they are on  -->
+              this works as an actie state indication so the user knows what page
+              theyre on  -->
         <TextView
             android:id="@+id/navHome"
             android:layout_width="0dp"

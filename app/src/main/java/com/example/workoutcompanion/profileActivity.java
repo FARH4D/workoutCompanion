@@ -32,12 +32,13 @@ public class profileActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
-
+        firstTimeChecker FirstTimeChecker = new firstTimeChecker(this);
         TextView textView = findViewById(R.id.textView);
         TextView profileName = findViewById(R.id.profileName);
         TextView profileBirth = findViewById(R.id.profileBirth);
         TextView profileEmail = findViewById(R.id.profileEmail);
         Button signInButton = findViewById(R.id.signIn);
+        Button premiumButton = findViewById(R.id.premiumButton);
 
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
         name = choices.getString("name", "null"); // Gets the value of the name key, if it doesn't exist the value becomes null instead
@@ -49,6 +50,19 @@ public class profileActivity extends AppCompatActivity {
             profileBirth.setText(choices.getString("birth", "null"));
             profileEmail.setText(choices.getString("email", "null"));
             signInButton.setText("Sign Out");
+
+            if ("premium".equals(choices.getString("premiumstatus", "null"))){ // Checks if the user has premium status
+                premiumButton.setText("You have a premium membership.");
+            } else {
+                premiumButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent premiumIntent = new Intent(profileActivity.this, buyPremiumActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                        premiumIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+                        startActivity(premiumIntent);
+                    }
+                });
+            }
         }
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +75,7 @@ public class profileActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(profileActivity.this, "Signed out.", Toast.LENGTH_SHORT).show();
 
+                    FirstTimeChecker.setFirstTime(true);
                     SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
                     SharedPreferences.Editor editor = choices.edit();
 
@@ -68,11 +83,12 @@ public class profileActivity extends AppCompatActivity {
                     editor.putString("email", "null");
                     editor.putString("birth", "");
                     editor.putString("premiumstatus", "basic");
+
                     editor.apply();  // Apply changes asynchronously
 
-                    Intent homeIntent = new Intent(profileActivity.this, homeActivity.class); // Creates a new intent so the screen can be switched to the home screen.
-                    homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
-                    startActivity(homeIntent);
+                    Intent welcomeIntent = new Intent(profileActivity.this, MainActivity.class); // Creates a new intent so the screen can be switched to the home screen.
+                    welcomeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Does not open a new screen, but instead opens it on the same screen.
+                    startActivity(welcomeIntent);
                 }
             }
         });

@@ -92,13 +92,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/goHome"
+        android:id="@+id/goBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="33dp"
         android:text="Go Home"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="invisible"

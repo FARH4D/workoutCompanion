@@ -37,7 +37,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="160dp"
-        android:text="@string/nameTitle"
+        android:text="@string/cardNum"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -61,55 +61,54 @@
         app:layout_constraintTop_toBottomOf="@+id/cardTitle" />
 
     <TextView
+        android:id="@+id/addressTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="160dp"
+        android:text="@string/billingAddress"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCard" />
+
+    <EditText
+        android:id="@+id/editAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="100dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressTitle" />
+
+    <TextView
         android:id="@+id/cvvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="142dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="142dp"
-        android:text="@string/passTitle"
+        android:text="@string/CVV"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCard" />
+        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
 
-    <TextView
-        android:id="@+id/emailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="142dp"
-        android:text="@string/emailTitle"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
-
-    <TextView
-        android:id="@+id/birthTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="100dp"
-        android:text="@string/birthdateTitle"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
-        android:id="@+id/editTextPass"
+        android:id="@+id/editCVV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -123,40 +122,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvvTitle" />
 
-    <!--  I used hint rather than text to enter the default text for the date of birth input
-          so the text would not be confused as a user input when the app checks if all fields
-          are completed. -->
-    <EditText
-        android:id="@+id/editTextDate"
+    <TextView
+        android:id="@+id/cityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:hint="@string/selectBirthDate"
-        android:textColorHint="@color/white"
-        android:gravity="center"
-        android:focusable="false"
-        android:inputType="date"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="160dp"
+        android:text="@string/City"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/birthTitle" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editCVV" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
+        android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/cityTitle" />
 
     <Button
         android:id="@+id/completeSignUp"

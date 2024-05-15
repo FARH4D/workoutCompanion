@@ -5,21 +5,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,7 +50,7 @@ public class workingOutActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
                                                                                                                                      // FLAG LIGHT was added because the design will have a white background, so without this the text on the status bar would be white and unreadable
-        goHome = findViewById(R.id.goHome);
+        goHome = findViewById(R.id.goBack);
         SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
         String gender = choices.getString("gender", "null"); // Gets the gender and activity level of the user to adjust the amount of reps needed.
         String experience = choices.getString("experience", "null");
@@ -89,7 +85,6 @@ public class workingOutActivity extends AppCompatActivity {
                 startActivity(homeIntent);
             }
         });
-
     }
 
     private void prepare(){

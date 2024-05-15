@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTitle" />
 
     <TextView
-        android:id="@+id/passTitle"
+        android:id="@+id/cvvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="142dp"
@@ -65,7 +65,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/cvvTitle" />
 
     <Button
         android:id="@+id/signInButton"

@@ -31,14 +31,55 @@ public class basicWorkouts extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Chin ups");
                 exercises.add("Push ups");
-                exercises.add("Bodyweight Squats");
-                exercises.add("Pull ups");
+                exercises.add("Bodyweight Lunges");
+                exercises.add("Lying Leg Raises");
+                exercises.add("Shoulder Push ups");
+                exercises.add("Squat Jumps");
 
                 Intent basicIntent1 = new Intent(basicWorkouts.this, workingOutActivity.class);
                 basicIntent1.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
                 basicIntent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(basicIntent1);
+            }
+        });
+
+        FrameLayout workout2 = findViewById(R.id.button2);
+        workout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Shoulder Push ups");
+                exercises.add("Barbell Bench Press");
+                exercises.add("Chin ups");
+                exercises.add("Barbell Bent Over Rows");
+                exercises.add("Push ups");
+                exercises.add("Burpee Push ups");
+
+                Intent basicIntent2 = new Intent(basicWorkouts.this, workingOutActivity.class);
+                basicIntent2.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                basicIntent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(basicIntent2);
+            }
+        });
+
+        FrameLayout workout3 = findViewById(R.id.button3);
+        workout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> exercises = new ArrayList<>(); // Creates an array list called exercises so it can be sent to the working out activity
+                exercises.add("Barbell Bench Press");
+                exercises.add("Push ups");
+                exercises.add("Shoulder Push ups");
+                exercises.add("Band Chest Press");
+                exercises.add("Barbell Incline Bench Press");
+                exercises.add("Close Grip Push ups");
+
+                Intent basicIntent3 = new Intent(basicWorkouts.this, workingOutActivity.class);
+                basicIntent3.putStringArrayListExtra("exerciseList", exercises); // Puts the exercises array into the intent being launched
+                basicIntent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(basicIntent3);
             }
         });
 
@@ -81,7 +122,5 @@ public class basicWorkouts extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
-
-
     }
 }

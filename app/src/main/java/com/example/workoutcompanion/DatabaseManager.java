@@ -1,5 +1,6 @@
 package com.example.workoutcompanion;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -116,5 +117,33 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 "COUNT(*) AS total_workouts, SUM(reps) AS total_reps, SUM(duration) AS total_duration, SUM(exercises) AS total_exercises " +
                 "FROM Workouts WHERE user_email = ? AND strftime('%Y-%m', date) = strftime('%Y-%m', 'now', 'localtime') " +
                 "GROUP BY month", new String[]{email});
+    }
+
+    public int getStreak(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int streak = 0;
+
+        Cursor cursor = db.rawQuery("SELECT MIN(date) as start_date FROM Workouts WHERE user_email = ?", new String[]{email}); // Gets the earliest date of a workout in the workout database and stores it as start_date
+        if (cursor.moveToFirst()){
+            @SuppressLint("Range") String startDate = cursor.getString(cursor.getColumnIndex("start_date")); // This gets the value of the start date
+            for (String dateToCheck = "date('now', 'localtime')";
+                 !dateToCheck.equals(startDate); // This for loop keeps going down in value (starting from today's date) until it goes down to the start date
+                 dateToCheck = "date(" + dateToCheck + ", '-1 day')") {
+
+                Cursor dayCursor = db.rawQuery("SELECT COUNT(*) as workout_count FROM Workouts " +
+                        "WHERE user_email = ? AND date(date) = " + dateToCheck, new String[]{email}); // This part of the loop makes sure that there was an actual workout on the current day of the loop (no point figuring out the time between the first workout and the current date, i need to make sure that there was actually a workout on all of the days)
+                if (dayCursor.moveToFirst()) {                                                         // The number of workouts on that day is stored as workout_cunt
+                    @SuppressLint("Range") int count = dayCursor.getInt(dayCursor.getColumnIndex("workout_count"));
+                    if (count > 0) {
+                        streak++; // If the workout count was at least 0, it adds 1 to the streak
+                    } else {
+                        break;
+                    }
+                }
+                dayCursor.close(); // Closes the the day cursor and original cursor so memory is not wasted.
+                cursor.close();
+            }
+        }
+        return streak;
     }
 }
