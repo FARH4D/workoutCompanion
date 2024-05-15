@@ -44,7 +44,7 @@ public class premiumWorkouts extends AppCompatActivity {
             }
         });
 
-        FrameLayout workout2 = findViewById(R.id.button1);
+        FrameLayout workout2 = findViewById(R.id.button2);
         workout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +65,7 @@ public class premiumWorkouts extends AppCompatActivity {
             }
         });
 
-        FrameLayout workout3 = findViewById(R.id.button1);
+        FrameLayout workout3 = findViewById(R.id.button3);
         workout3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

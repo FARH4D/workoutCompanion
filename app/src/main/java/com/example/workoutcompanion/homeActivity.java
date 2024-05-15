@@ -6,6 +6,9 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
@@ -16,6 +19,9 @@ import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.sql.Time;
+import java.util.Locale;
 
 public class homeActivity extends AppCompatActivity {
 
@@ -60,9 +66,26 @@ public class homeActivity extends AppCompatActivity {
                 TextView workoutNumber = findViewById(R.id.workoutNumber);
                 workoutNumber.setText(String.valueOf(totalWorkouts));
                 TextView repetitionNumber = findViewById(R.id.repetitionNumber);
-                repetitionNumber.setText(String.valueOf(totalReps));
                 TextView timeNumber = findViewById(R.id.timeNumber);
-                timeNumber.setText(String.valueOf(totalDuration));
+
+                float realTime = (float) totalDuration / 3600; // To convert the amount of seconds to an hour we have to divide it by 3600 since there are 3600 seconds in an hour
+                String formattedTime = String.format(Locale.getDefault(), "%.1f", realTime); // Converts realTime into a more presentable format (such as 1 decimal point and rounding up)
+
+                String timeText = formattedTime + "  Hours"; // Creating a timeText so the second half can be a different colour
+                SpannableString timeString = new SpannableString(timeText); // Using a spannable styling which lets me apply specific styles to different parts of the text
+                int start = formattedTime.length(); // Assigning the starting part of the string to the length of the time so only the end part is red
+                int end = timeText.length(); // Setting the end length
+                timeString.setSpan(new ForegroundColorSpan(Color.RED), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                timeNumber.setText(timeString);
+
+
+                String formatReps = String.valueOf(totalReps); // Converting the rep amount into a string so I can easily get the length of it (which is not available for integers)
+                String repText = formatReps + "  Reps"; // Creating a repText so the second half can be a different colour
+                SpannableString repString = new SpannableString(repText); // Using a spannable styling which lets me apply specific styles to different parts of the text
+                int start2 = formatReps.length(); // Assigning the starting part of the string to the length of the time so only the end part is red
+                int end2 = repText.length(); // Setting the end length
+                repString.setSpan(new ForegroundColorSpan(Color.RED), start2, end2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                repetitionNumber.setText(repString);
             }
         }
 

@@ -30,6 +30,7 @@ public class buyPremiumActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT); // Sets the colour of the status bar to transparent
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE); // This makes it so the content on the screen can extend into the status bar (so the status bar doesn't just sit on top of everything)
 
+        DatabaseManager db = new DatabaseManager(this);
         EditText editTextCard = findViewById(R.id.editTextCard);
         EditText editTextAddress = findViewById(R.id.editAddress);
         EditText editTextCVV = findViewById(R.id.editCVV);
@@ -51,8 +52,12 @@ public class buyPremiumActivity extends AppCompatActivity {
                 } else if (!cvv.matches("\\d{3}")) {
                     Toast.makeText(getApplicationContext(), "The CVV must be the last 3 digits of your card and only contain numbers.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Premium Membership has been purchased.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Premium Membership has been purchased.", Toast.LENGTH_SHORT).show(); // Tells the user the premium membership has been purchased
+
                     SharedPreferences choices = getSharedPreferences("userChoices", MODE_PRIVATE);
+                    String email = choices.getString("email", "null"); // Gets the value of the email key, if it doesn't exist the value becomes null instead
+                    db.updatePremiumStatus(email, "premium"); // Update premium status in database
+
                     SharedPreferences.Editor editor = choices.edit();
                     editor.putString("premiumstatus", "premium");
 

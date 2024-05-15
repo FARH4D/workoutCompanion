@@ -82,6 +82,16 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return cursor; // Return the cursor directly, null check will be handled by the caller
     }
 
+    public void updatePremiumStatus(String email, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_PREMIUM, status);
+
+        // Updating the row
+        db.update(TABLE_USERS, values, KEY_USER_EMAIL + " = ?", new String[]{email});
+        db.close(); // Closing the database connection to save memory
+    }
+
     public void insertWorkout(String email, String date, int reps, int exercises, int duration){
         SQLiteDatabase db2 = this.getWritableDatabase();
         ContentValues values2 = new ContentValues(); // Opens a content values instance so I can insert data with a key and a value (the key will be the column the data goes into).

@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
+
 public class reportActivity extends AppCompatActivity {
 
     private String name;
@@ -66,7 +68,9 @@ public class reportActivity extends AppCompatActivity {
 
                 // Takes the ids of the labels and then assigns the correct values to the label for the user to see
                 exercisesNum.setText(String.valueOf(totalExercises));
-                timeNum.setText(String.valueOf(totalDuration));
+                float realTime = (float) totalDuration / 3600; // To convert the amount of seconds to an hour we have to divide it by 3600 since there are 3600 seconds in an hour
+                String formattedTime = String.format(Locale.getDefault(), "%.1f", realTime); // Converts realTime into a more presentable format (such as 1 decimal point and rounding up)
+                timeNum.setText(formattedTime);
 
                 workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                 repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
@@ -107,7 +111,9 @@ public class reportActivity extends AppCompatActivity {
                         @SuppressLint("Range") int totalDuration = monthlyStats.getInt(monthlyStats.getColumnIndex("total_duration"));
 
                         exercisesNum.setText(String.valueOf(totalExercises));
-                        timeNum.setText(String.valueOf(totalDuration));
+                        float realTime = (float) totalDuration / 3600; // To convert the amount of seconds to an hour we have to divide it by 3600 since there are 3600 seconds in an hour
+                        String formattedTime = String.format(Locale.getDefault(), "%.1f", realTime); // Converts realTime into a more presentable format (such as 1 decimal point and rounding up)
+                        timeNum.setText(formattedTime);
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
                         monthlyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
@@ -135,7 +141,9 @@ public class reportActivity extends AppCompatActivity {
                         @SuppressLint("Range") int totalDuration = weeklyStats.getInt(weeklyStats.getColumnIndex("total_duration"));
 
                         exercisesNum.setText(String.valueOf(totalExercises));
-                        timeNum.setText(String.valueOf(totalDuration));
+                        float realTime = (float) totalDuration / 3600; // To convert the amount of seconds to an hour we have to divide it by 3600 since there are 3600 seconds in an hour
+                        String formattedTime = String.format(Locale.getDefault(), "%.1f", realTime); // Converts realTime into a more presentable format (such as 1 decimal point and rounding up)
+                        timeNum.setText(formattedTime);
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
                         weeklyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
@@ -163,7 +171,9 @@ public class reportActivity extends AppCompatActivity {
                         @SuppressLint("Range") int totalDuration = dailyStats.getInt(dailyStats.getColumnIndex("total_duration"));
 
                         exercisesNum.setText(String.valueOf(totalExercises));
-                        timeNum.setText(String.valueOf(totalDuration));
+                        float realTime = (float) totalDuration / 3600; // To convert the amount of seconds to an hour we have to divide it by 3600 since there are 3600 seconds in an hour
+                        String formattedTime = String.format(Locale.getDefault(), "%.1f", realTime); // Converts realTime into a more presentable format (such as 1 decimal point and rounding up)
+                        timeNum.setText(formattedTime);
                         workoutNumber.setText("\uD83D\uDCAA Workouts:\n  " + String.valueOf(totalWorkouts));
                         repetitionNumber.setText("\uD83C\uDFCB\uFE0F Repetitions:\n  " + String.valueOf(totalReps));
                         dailyStats.close(); // Closing the cursor so performance isnt affected by a possible memory leak if multiple cursors are still open and unused
